@@ -1,0 +1,41 @@
+Sources/Gleam/Info.plist
+  4c36aa321db70234 8,15-18,28
+README.md
+  4c36aa321db70234 79,81-87,93
+scripts/generate-icon.swift
+  4c36aa321db70234 1-139
+Sources/Gleam/Gleam.entitlements
+  4c36aa321db70234 1-8
+Sources/Gleam/SmilePipeline.swift
+  4c36aa321db70234 2,15,17-18,38,40-48,50,52,68-69
+Package.swift
+  4c36aa321db70234 13
+scripts/package.sh
+  4c36aa321db70234 1-73
+Sources/Gleam/CameraCapture.swift
+  4c36aa321db70234 3,30-45
+Sources/Gleam/PopoverView.swift
+  4c36aa321db70234 20-27,105-109,129-162
+Sources/Gleam/StatusBarController.swift
+  4c36aa321db70234 35
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.2.15",
+  "base_commit_sha": "9c9952f1a3f2d412176bc657455492b79b140fc4",
+  "prompts": {
+    "4c36aa321db70234": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "022063f2-83db-4b6e-bbaa-e581afbdbc93",
+        "model": "claude-sonnet-4.6"
+      },
+      "human_author": "Tianye Song",
+      "messages": [],
+      "total_additions": 336,
+      "total_deletions": 38,
+      "accepted_lines": 322,
+      "overriden_lines": 0
+    }
+  }
+}
