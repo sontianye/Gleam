@@ -76,18 +76,22 @@ All processing happens locally using Apple's **CoreImage** and **Vision** framew
 
 ## Install
 
-### Option A — Build from source
+### Option A — Download (recommended)
+
+1. Download `Gleam-1.0.0.dmg` from [Releases](https://github.com/sontianye/Gleam/releases)
+2. Open the DMG, drag **Gleam** to **Applications**
+3. On first launch, right-click Gleam → Open (or run `xattr -cr /Applications/Gleam.app`)
+
+> macOS may warn "app is damaged" for unsigned apps. This is normal for open-source software. The `xattr` command above removes the quarantine flag. See [this issue](https://github.com/sontianye/Gleam/issues/1) for details.
+
+### Option B — Build from source
 
 ```bash
 git clone https://github.com/sontianye/Gleam.git
 cd Gleam
 swift build -c release
-.build/release/Gleam
+swift run Gleam
 ```
-
-### Option B — Download release
-
-Download the latest release from [Releases](https://github.com/sontianye/Gleam/releases).
 
 ---
 

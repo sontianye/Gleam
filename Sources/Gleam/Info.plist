@@ -5,13 +5,17 @@
     <key>CFBundleName</key>
     <string>Gleam</string>
     <key>CFBundleIdentifier</key>
-    <string>dev.gleam.app</string>
+    <string>com.sontianye.Gleam</string>
     <key>CFBundleVersion</key>
     <string>1</string>
     <key>CFBundleShortVersionString</key>
     <string>1.0.0</string>
     <key>CFBundleExecutable</key>
     <string>Gleam</string>
+    <key>CFBundlePackageType</key>
+    <string>APPL</string>
+    <key>CFBundleIconFile</key>
+    <string>AppIcon</string>
     <key>LSUIElement</key>
     <true/>
     <key>NSCameraUsageDescription</key>
@@ -21,6 +25,6 @@
     <key>LSMinimumSystemVersion</key>
     <string>14.0</string>
     <key>NSHumanReadableCopyright</key>
-    <string>© 2025 Gleam. MIT License.</string>
+    <string>Copyright 2026 Tianye Song. MIT License.</string>
 </dict>
 </plist>

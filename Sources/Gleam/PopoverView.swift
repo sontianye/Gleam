@@ -17,10 +17,14 @@ struct PopoverView: View {
         VStack(spacing: 0) {
             header
             Divider()
-            statsSection
-            Divider()
-            recentGrid
-            Divider()
+            if let error = pipeline.errorMessage {
+                errorBanner(error)
+            } else {
+                statsSection
+                Divider()
+                recentGrid
+                Divider()
+            }
             footer
         }
         .frame(width: 320)
@@ -98,7 +102,11 @@ struct PopoverView: View {
     private var footer: some View {
         HStack {
             Button(pipeline.isRunning ? "Pause" : "Resume") {
-                pipeline.isRunning ? pipeline.stop() : pipeline.start()
+                if pipeline.isRunning {
+                    pipeline.stop()
+                } else {
+                    Task { await pipeline.start() }
+                }
             }
             .buttonStyle(.bordered)
             .controlSize(.small)
@@ -116,6 +124,40 @@ struct PopoverView: View {
                 .controlSize(.small)
         }
         .padding(12)
+    }
+
+    // MARK: - Error banner
+
+    private func errorBanner(_ message: String) -> some View {
+        VStack(spacing: 10) {
+            Image(systemName: "video.slash")
+                .font(.title2)
+                .foregroundStyle(.red)
+            Text("Camera Access Required")
+                .font(.subheadline.bold())
+            Text(message)
+                .font(.caption)
+                .foregroundStyle(.secondary)
+                .multilineTextAlignment(.center)
+                .padding(.horizontal, 20)
+
+            VStack(spacing: 8) {
+                Button("Open Camera Settings") {
+                    if let url = URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_Camera") {
+                        NSWorkspace.shared.open(url)
+                    }
+                }
+                .buttonStyle(.borderedProminent)
+                .controlSize(.small)
+
+                Button("Retry") {
+                    Task { await pipeline.start() }
+                }
+                .buttonStyle(.bordered)
+                .controlSize(.small)
+            }
+        }
+        .padding(.vertical, 24)
     }
 
     // MARK: - Helpers

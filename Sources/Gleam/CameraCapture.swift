@@ -1,8 +1,8 @@
 import AVFoundation
 import CoreImage
+import AppKit
 
 /// Streams camera frames as a Swift AsyncStream.
-/// All AVFoundation callbacks are dispatched internally; consumers receive frames on a background queue.
 @preconcurrency
 final class CameraCapture: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate, @unchecked Sendable {
 
@@ -27,7 +27,22 @@ final class CameraCapture: NSObject, AVCaptureVideoDataOutputSampleBufferDelegat
 
     // MARK: - Lifecycle
 
-    func start() throws {
+    func start() async throws {
+        let authStatus = AVCaptureDevice.authorizationStatus(for: .video)
+
+        if authStatus == .notDetermined {
+            // Must activate the app for the TCC dialog to appear.
+            // LSUIElement apps (no Dock icon) won't show permission dialogs
+            // unless explicitly activated.
+            await MainActor.run {
+                NSApp.activate(ignoringOtherApps: true)
+            }
+            let granted = await AVCaptureDevice.requestAccess(for: .video)
+            guard granted else { throw GleamError.cameraSetupFailed }
+        } else if authStatus == .denied || authStatus == .restricted {
+            throw GleamError.cameraSetupFailed
+        }
+
         session.beginConfiguration()
         session.sessionPreset = .medium
 

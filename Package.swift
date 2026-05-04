@@ -10,7 +10,7 @@ let package = Package(
         .executableTarget(
             name: "Gleam",
             path: "Sources/Gleam",
-            exclude: ["Info.plist"],
+            exclude: ["Info.plist", "Gleam.entitlements", "Resources"],
             swiftSettings: [
                 .enableUpcomingFeature("BareSlashRegexLiterals")
             ]

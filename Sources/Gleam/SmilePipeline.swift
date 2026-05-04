@@ -1,4 +1,5 @@
 import Foundation
+import AVFoundation
 @preconcurrency import CoreImage
 
 /// Orchestrates the full pipeline: camera → face analysis → photo capture.
@@ -11,6 +12,10 @@ final class SmilePipeline: ObservableObject {
     @Published private(set) var isRunning: Bool = false
     @Published private(set) var smileIntensity: Float = 0
     @Published private(set) var lastCaptureDate: Date?
+    @Published private(set) var errorMessage: String?
+
+    /// Whether camera permission has never been requested (first launch).
+    @Published private(set) var needsPermission: Bool = false
 
     // MARK: - Dependencies
 
@@ -30,13 +35,21 @@ final class SmilePipeline: ObservableObject {
 
     // MARK: - Control
 
-    func start() {
+    func start() async {
         guard !isRunning else { return }
+        errorMessage = nil
+
+        let authStatus = AVCaptureDevice.authorizationStatus(for: .video)
+        if authStatus == .denied || authStatus == .restricted {
+            errorMessage = "Camera access denied. Please enable it in System Settings → Privacy & Security → Camera."
+            needsPermission = true
+            return
+        }
+
         do {
-            try camera.start()
+            try await camera.start()
             isRunning = true
-            // Detach so Vision work runs on a background thread,
-            // never blocking the main run loop.
+            needsPermission = false
             let camera    = self.camera
             let analyzer  = self.analyzer
             let photoMgr  = self.photoManager
@@ -52,8 +65,8 @@ final class SmilePipeline: ObservableObject {
             }
         } catch {
             print("[Gleam] ❌ Camera start failed: \(error.localizedDescription)")
-            // Surface the error visibly in debug builds
-            assertionFailure("[Gleam] Camera start failed: \(error)")
+            needsPermission = true
+            errorMessage = "Camera access denied. Please enable it in System Settings → Privacy & Security → Camera."
         }
     }
 

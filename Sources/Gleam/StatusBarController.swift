@@ -32,7 +32,7 @@ final class StatusBarController {
         setupStatusItem()
         setupPopover(photoManager: photoManager, statsManager: statsManager)
         bindPipeline()
-        pipeline.start()
+        Task { await pipeline.start() }
     }
 
     // MARK: - Setup
