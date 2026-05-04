@@ -1,0 +1,23 @@
+.gitignore
+  4c36aa321db70234 3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.2.15",
+  "base_commit_sha": "85941398560c7147395bd145c55a896758a1bfc1",
+  "prompts": {
+    "4c36aa321db70234": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "022063f2-83db-4b6e-bbaa-e581afbdbc93",
+        "model": "claude-sonnet-4.6"
+      },
+      "human_author": "Tianye Song",
+      "messages": [],
+      "total_additions": 1,
+      "total_deletions": 0,
+      "accepted_lines": 1,
+      "overriden_lines": 0
+    }
+  }
+}
