@@ -19,6 +19,11 @@ The moment it catches one, it silently takes a photo — no sound, no flash, no 
 
 You'll forget it's running. Then one day you'll open it and find 200 pictures of yourself smiling.
 
+<div align="center">
+  <img src="docs/assets/screenshot.png" width="640" alt="Gleam in action — 339 smiles captured today" />
+  <p><sub>339 smiles in one day. Your happiest moments, captured without asking.</sub></p>
+</div>
+
 ---
 
 ## Features
