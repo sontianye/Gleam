@@ -1,0 +1,53 @@
+Sources/Gleam/main.swift
+  d85b24faa849d78f 3-11
+Sources/Gleam/StatsManager.swift
+  d85b24faa849d78f 24-28
+Sources/Gleam/StatusBarController.swift
+  4c36aa321db70234 6-16,25-29,43,62,64-79,81-82,85-103,106-114,116-129,135
+Sources/Gleam/PopoverView.swift
+  d85b24faa849d78f 29-30
+Sources/Gleam/SmilePipeline.swift
+  d85b24faa849d78f 2,5,38-43,45-50,54-56,67-74,78,80-81,86-87,89,92-95
+Sources/Gleam/PhotoManager.swift
+  d85b24faa849d78f 33-39,129-132,134
+Sources/Gleam/FaceAnalyzer.swift
+  d85b24faa849d78f 301
+  4c36aa321db70234 4,11,15,19-20,32,40-41,53-54,65,81-83,86,89-92,95,99-102,124,175,179,184,254,258,266,275-277,282,287,298,311-314,318-322,327,346-352,356-358,368,378,393-394,412-413,424,426,428-435
+Package.swift
+  d85b24faa849d78f 10,13,15
+Sources/Gleam/AppDelegate.swift
+  d85b24faa849d78f 10-27,30-32,35-37
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.2.15",
+  "base_commit_sha": "261f26ae1ff7f893c5b9410bd218467d5024c67d",
+  "prompts": {
+    "4c36aa321db70234": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "022063f2-83db-4b6e-bbaa-e581afbdbc93",
+        "model": "claude-sonnet-4.6"
+      },
+      "human_author": "Tianye Song",
+      "messages": [],
+      "total_additions": 726,
+      "total_deletions": 572,
+      "accepted_lines": 152,
+      "overriden_lines": 73
+    },
+    "d85b24faa849d78f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8094158f-1ca7-4f18-a1ac-cd4f6bff98eb",
+        "model": "claude-sonnet-4.6"
+      },
+      "human_author": "Tianye Song",
+      "messages": [],
+      "total_additions": 239,
+      "total_deletions": 149,
+      "accepted_lines": 91,
+      "overriden_lines": 2
+    }
+  }
+}
